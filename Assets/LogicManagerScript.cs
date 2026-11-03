@@ -15,7 +15,6 @@ public class LogicManagerScript : MonoBehaviour
     [SerializeField] private Text highScoreText;
     [SerializeField] private Button mainMenu;
 
-    [ContextMenu("Increase Score")]
 
     private void Start()
     {
@@ -27,21 +26,16 @@ public class LogicManagerScript : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
+    [ContextMenu("Increase Score")]
     public void addScore()
     {
         playerScore++;
         scoreText.text = playerScore.ToString();
     }
 
-    [ContextMenu("Decrease Score")]
-    public void descreaseScore()
-    {
-        playerScore--;
-        scoreText.text = playerScore.ToString();
-    }
-
     public void restartGame()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
@@ -54,10 +48,14 @@ public class LogicManagerScript : MonoBehaviour
             PlayerPrefs.SetInt("HighScore", playerScore);
             highScore = playerScore;
         }
-
-        highScoreText.text = "Best: " + highScore;
+        Time.timeScale = 0;
+        highScoreText.text = "BEST: " + highScore;
         gameOverScreen.SetActive(true);
-        Debug.Log("Game over");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 
     public void resumeGame()

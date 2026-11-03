@@ -8,6 +8,8 @@ public class BirdScript : MonoBehaviour
     public LogicManagerScript Logic;
     public bool alive = true;
     public AudioSource jumpSound;
+    public AudioSource hitSound;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -34,6 +36,8 @@ public class BirdScript : MonoBehaviour
         {
             alive = false;
             Logic.gameOver();
+            hitSound.Play();
+            Camera.main.GetComponent<CameraShake>().Shake();
         }
     }
 
@@ -42,6 +46,8 @@ public class BirdScript : MonoBehaviour
         if (alive)
         {
             Logic.gameOver();
+            hitSound.Play();
+            Camera.main.GetComponent<CameraShake>().Shake();
             alive = false;
         }
     }
