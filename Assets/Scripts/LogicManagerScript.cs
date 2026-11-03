@@ -24,6 +24,7 @@ public class LogicManagerScript : MonoBehaviour
     public void switchMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
+        PlayerPrefs.SetInt("MusicOn", 1);
     }
 
     [ContextMenu("Increase Score")]
