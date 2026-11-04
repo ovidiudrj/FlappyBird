@@ -4,7 +4,7 @@ using UnityEngine;
 public class BirdScript : MonoBehaviour
 {
     public Rigidbody2D myRigidbody;
-    public float flapStrenght;
+    public float flapStrength;
     public LogicManagerScript Logic;
     public bool alive = true;
     public AudioSource jumpSound;
@@ -21,7 +21,7 @@ public class BirdScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && alive && !Logic.isPaused)
         {
-            myRigidbody.linearVelocity = Vector2.up * flapStrenght;
+            myRigidbody.linearVelocity = Vector2.up * flapStrength;
             jumpSound.Play();
         }
 
